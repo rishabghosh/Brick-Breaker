@@ -1,6 +1,8 @@
-	change mocha.css
-	check mocha is wired with tests and browsers
-	update package.json to run test on test
-	
+*** index.html ***
+	* add & style playground/screen/viewPoint
+	* add & style paddle
+	* make the game.js to draw paddle
+	* provide left-right movement to the paddle
+
 
 

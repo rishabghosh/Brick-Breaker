@@ -3,7 +3,6 @@
 
 describe("sum", () => {
   it("should add two numbers", () => {
-    chai.expect(sum(1, 2)).to.equal(3);
+    chai.assert.equal(sum(1, 2), 3);
   });
 });
-console.log("inside gameTest")
