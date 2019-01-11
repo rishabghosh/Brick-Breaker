@@ -1,6 +1,5 @@
 *** index.html ***
-	* add & style playground/screen/viewPoint
-	* add & style paddle
+	done * write initialiser and load 
 	* make the game.js to draw paddle
 	* provide left-right movement to the paddle
 
