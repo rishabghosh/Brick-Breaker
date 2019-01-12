@@ -22,11 +22,19 @@ const movePaddle = function (paddle) {
 };
 
 const initialize = function () {
+  const height = 20;
+  const width = 100;
+  const bottom = 5;
+  const left = 430;
+
+  //creates a new div named paddle inside playground
   const playground = document.getElementById("playground");
   const paddleDiv = createPaddleDiv();
   playground.appendChild(paddleDiv);
 
-  const paddle = new Paddle(20, 100, 5, 430);
+
+  const paddle = new Paddle(height, width, bottom, left);
+  //changes each spec of paddle div with the same spec of paddle object
   drawPaddle(paddle);
 
   playground.focus(); //events focuses on playground

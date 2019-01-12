@@ -1,9 +1,6 @@
 *** index.html ***
-	done * write initialiser and load 
-	* make the game.js to draw paddle
-	* provide left-right movement to the paddle
-	* make a Paddle class which will take height, width, left and bottom
-	* Paddle will have functions like move right and move left
-
+	* try to test functions
+	* add SPEED to class Paddle?
+	* 
 
 
