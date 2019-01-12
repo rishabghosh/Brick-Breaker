@@ -1,9 +1,20 @@
 *** index.html ***
 	* add SPEED to class Paddle?
 	* add ball class
+
+	* give the Ball class parameters like velocity ballPosition
+	* ballPosition is current position of ball 
+	* and velocity will have direction and SPEED
+
 	* make a new instance of ball
-	* give the ball a primary direction and velocity
+	* //////give the ball a primary direction and velocity
 	* change position of in setInterval - 
 		- make the ball move in the playground
+
+*** directory ***
+ * change filename controller to main
+ * extract funcitons for view from controller
+  - like drawPaddle
+  - 
 
 
