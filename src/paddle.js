@@ -1,8 +1,3 @@
-const sum = function (a, b) {
-  return a + b;
-};
-
-
 class Paddle {
   constructor(height, width, bottom, left){
     this.height = height;

@@ -1,5 +1,4 @@
 /* eslint-env mocha */
-/* eslint no-undef: "off" */
 
 describe("sum", () => {
   it("should add two numbers", () => {
