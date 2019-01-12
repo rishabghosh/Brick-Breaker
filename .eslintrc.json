@@ -3,19 +3,33 @@
         "browser": true,
         "es6": true
     },
-
     "extends": "eslint:recommended",
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
+    "plugins": [
+        "html"
+    ],
     "rules": {
-        "no-undef": 0,
+        "no-undef":0,
         "no-console": 0,
         "no-unused-vars": 0,
-        "indent": [ "error", 2 ],
-        "linebreak-style": [ "error", "unix" ],
-        "quotes": [ "error", "double" ],
-        "semi": [ "error", "always" ]
+        "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
     }
 }

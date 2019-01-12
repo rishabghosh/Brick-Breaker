@@ -36,7 +36,6 @@ const initialize = function () {
 
 
   const paddle = new Paddle(height, width, bottom, left);
-  console.log(paddle);
   //changes each spec of paddle div with the same spec of paddle object
   drawPaddle(paddle);
 

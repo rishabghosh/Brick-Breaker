@@ -1,6 +1,9 @@
 *** index.html ***
-	* try to test functions
 	* add SPEED to class Paddle?
-	* 
+	* add ball class
+	* make a new instance of ball
+	* give the ball a primary direction and velocity
+	* change position of in setInterval - 
+		- make the ball move in the playground
 
 
