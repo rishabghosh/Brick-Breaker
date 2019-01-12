@@ -1,15 +1,17 @@
-const createPaddle = function() {
-  let playground = document.getElementById("playground");
-  let paddle = document.createElement("div");
-  paddle.className = "paddle";
-  paddle.id = "paddle_1";
-  //creates a new child, or div (as paddle) inside parent, or main (playground)
-  playground.appendChild(paddle);
+const createPaddleDiv = function(){
+  const div = document.createElement("div");
+  div.className = "paddle";
+  div.id = "paddle_1";
+  return div;
 };
 
 
 const initialize = function () {
-  createPaddle();
+  const playground = document.getElementById("playground");
+  const paddleDiv = createPaddleDiv();
+  playground.appendChild(paddleDiv);
+  
+  console.log(paddleDiv);
   console.log("window loaded");
 };
 
