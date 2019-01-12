@@ -36,6 +36,7 @@ class Ball {
     
   moveRight() {
     this.left += 10;
+
   }
 
 }

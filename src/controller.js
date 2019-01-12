@@ -12,16 +12,19 @@ const initialize = function () {
   const width = 100;
   const bottom = 5;
   const left = 430;
+  const radius = 10;
 
-  //creates a new div named paddle inside playground
   const playground = document.getElementById(PLAYGROUND);
   const paddleDiv = createPaddleDiv();
+  const ballDiv = createBallDiv();
   playground.appendChild(paddleDiv);
+  playground.appendChild(ballDiv);
 
 
   const paddle = new Paddle(height, width, bottom, left);
-  //changes each spec of paddle div with the same spec of paddle object
+  const ball = new Ball(radius, 0, 0);
   drawPaddle(paddle);
+  drawBall(ball);
 
   playground.focus(); //events focuses on playground
   playground.onkeydown = movePaddle.bind(null, paddle);

@@ -10,3 +10,9 @@ main {
 	position: absolute;
 	background-color: black;
 }
+
+.ball {
+	background-color: red;
+	position: absolute;
+	border-radius: 50%;
+	}
