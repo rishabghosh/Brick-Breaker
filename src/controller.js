@@ -1,10 +1,15 @@
 const applyPixel = (count) => count + PIXEL;
 
-
 const movePaddle = function (paddle) {
   if (event.key === ARROW_RIGHT) { paddle.moveRight(); }
   if (event.key === ARROW_LEFT) { paddle.moveLeft(); }
   drawPaddle(paddle);
+};
+
+const moveBall = function (ball) {
+  ball.moveRight();
+  ball.moveBottom();
+  drawBall(ball);
 };
 
 const initialize = function () {
@@ -28,6 +33,7 @@ const initialize = function () {
 
   playground.focus(); //events focuses on playground
   playground.onkeydown = movePaddle.bind(null, paddle);
+  setInterval( ()=>moveBall(ball), 100);
 };
 
 window.onload = initialize;
