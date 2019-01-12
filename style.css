@@ -9,8 +9,4 @@ main {
 .paddle {
 	position: absolute;
 	background-color: black;
-	height: 20px;
-	width: 100px;
-	bottom: 5px;
-	left: 430px;
 }
