@@ -15,6 +15,12 @@ const drawPaddle = function (paddle) {
   paddleDiv.style.bottom = applyPixel(paddle.bottom);
 };
 
+const movePaddle = function (paddle) {
+  if (event.key === "ArrowRight") { paddle.moveRight(); }
+  if (event.key === "ArrowLeft") { paddle.moveLeft(); }
+  drawPaddle(paddle);
+};
+
 const initialize = function () {
   const playground = document.getElementById("playground");
   const paddleDiv = createPaddleDiv();
@@ -23,17 +29,8 @@ const initialize = function () {
   const paddle = new Paddle(20, 100, 5, 430);
   drawPaddle(paddle);
 
-  console.log(paddle);
-  console.log("window loaded");
-
   playground.focus(); //events focuses on playground
-
-  playground.onkeydown = function () {
-    if (event.key === "ArrowRight") { paddle.moveRight(); }
-    if (event.key === "ArrowLeft") { paddle.moveLeft(); }
-    drawPaddle(paddle);
-
-  };
+  playground.onkeydown = movePaddle.bind(null, paddle);
 };
 
 window.onload = initialize;
