@@ -1,5 +1,5 @@
 const createDiv = () => document.createElement(DIV);
-const getPaddle_1 = () => document.getElementById(PADDLE_ID1);
+const getPaddleId1 = () => document.getElementById(PADDLE_ID1);
 const applyPixel = (count) => count + PIXEL;
 
 const createPaddleDiv = function () {
@@ -10,7 +10,7 @@ const createPaddleDiv = function () {
 };
 
 const drawPaddle = function (paddle) {
-  const paddleDiv = getPaddle_1();
+  const paddleDiv = getPaddleId1();
   paddleDiv.style.height = applyPixel(paddle.height);
   paddleDiv.style.width = applyPixel(paddle.width);
   paddleDiv.style.left = applyPixel(paddle.left);
