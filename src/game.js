@@ -32,17 +32,29 @@ class Ball {
   }
 }
 
-const isColliedWithSideWalls = function(ball){
+const isColliedWithSideWalls = function (ball) {
   const diameterOfBall = ball.radius * 2;
-  return ball.position.left <= (0 + diameterOfBall) || 
-  ball.position.left >= (960 - diameterOfBall);
+  return ball.position.left <= (0 + diameterOfBall) ||
+    ball.position.left >= (960 - diameterOfBall);
 };
 
-const isColliedWithTopWall = function(ball){
+const isColliedWithTopWall = function (ball) {
   const diameterOfBall = ball.radius * 2;
-  return ball.position.top <= (0 + diameterOfBall) ||
-  ball.position.top >= (600 - diameterOfBall);
+  return ball.position.top <= (0 + diameterOfBall);
 };
+
+const hasColliedWithBottomWall = function(ball){
+  const diameterOfBall = ball.radius * 2;
+  return ball.position.top >= (600 - diameterOfBall);
+};
+
+const isColliedWithPaddle = function(ball, paddle){
+  const diameterOfBall = ball.radius * 2;
+  return (ball.position.left >= paddle.left &&
+  ball.position.left <= (paddle.left + paddle.width) &&
+  ball.position.top >= (600 - paddle.bottom - diameterOfBall));
+};
+
 
 class Game {
   constructor(paddle, ball) {
@@ -50,19 +62,32 @@ class Game {
     this.ball = ball;
   }
 
-  detectCollision() {
+  detectCollision(gameStatus) {
     const velocityOfLeft = this.ball.velocity.left;
     const velocityOfTop = this.ball.velocity.top;
     const diameterOfBall = this.ball.radius * 2;
+
+    if (isColliedWithPaddle(this.ball, this.paddle)){
+      this.ball.setVelocity(velocityOfLeft, -velocityOfTop);
+      console.log("collied with paddle");
+      return;
+    }
+
+    if (hasColliedWithBottomWall(this.ball)){
+      console.log("gameLost");
+
+    }
 
     if (isColliedWithTopWall(this.ball)) {
       this.ball.setVelocity(velocityOfLeft, -velocityOfTop);
       return;
     }
 
-    if (isColliedWithSideWalls(this.ball)){
+    if (isColliedWithSideWalls(this.ball)) {
       this.ball.setVelocity(-velocityOfLeft, velocityOfTop);
+      return;
     }
+
   }
 
 }
