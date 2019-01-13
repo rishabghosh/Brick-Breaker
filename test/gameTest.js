@@ -25,40 +25,91 @@ describe("class Paddle", () => {
 });
 
 describe("class Ball", () => {
-  const radius = 10;
-  const top = 10;
-  const left = 10;
+  const radius = 5;
 
-  describe("moveTop", () => {
-    it("should decrease ball.top by 10", () => {
-      const ball = new Ball(radius, top, left);
-      ball.moveTop();
-      chai.assert.equal(ball.top, 0);
+  describe("move", () => {
+
+    it("should add velocity with current position", () => {
+      const velocity = { left: 5, top: 5 };
+      const ballPosition = { left: 0, top: 0 };
+      const ball = new Ball(radius, ballPosition, velocity);
+      ball.move();
+
+      const expectedOutput = { left: 5, top: 5 };
+      chai.assert.deepEqual(ball.position, expectedOutput);
+    });
+
+    it("should add velocity with current position", () => {
+      const velocity = { left: 5, top: 5 };
+      const ballPosition = { left: 10, top: 10 };
+      const ball = new Ball(radius, ballPosition, velocity);
+      ball.move();
+
+      const expectedOutput = { left: 15, top: 15 };
+      chai.assert.deepEqual(ball.position, expectedOutput);
     });
   });
 
-  describe("moveBottom", () => {
-    it("should increase ball.top by 10", () => {
-      const ball = new Ball(radius, top, left);
-      ball.moveBottom();
-      chai.assert.equal(ball.top, 20);
+  describe("setVelocity", () => {
+
+    it("should change left and top of velocity", () => {
+      const velocity = { left: 5, top: 5 };
+      const ballPosition = { left: 0, top: 0 };
+      const ball = new Ball(radius, ballPosition, velocity);
+      ball.setVelocity(10, 10);
+
+      const expectedOutput = { left: 10, top: 10 };
+      chai.assert.deepEqual(ball.velocity, expectedOutput);
     });
+
+    describe("behaviour", () => {
+
+      it("should move towards bottom-right if velocity is not changed", () => {
+        const velocity = { left: 5, top: 5 };
+        const ballPosition = { left: 0, top: 0 };
+        const ball = new Ball(radius, ballPosition, velocity);
+        ball.move();
+
+        const expected = { left: 5, top: 5 };
+        chai.assert.deepEqual(ball.position, expected);
+      });
+
+      it("should be able to move towards top-left", () => {
+        const velocity = { left: 5, top: 5 };
+        const ballPosition = { left: 50, top: 50 };
+        const ball = new Ball(radius, ballPosition, velocity);
+        ball.setVelocity(-(ball.velocity.left), -(ball.velocity.top) );
+        ball.move();
+
+        const expected = { left: 45, top: 45 };
+        chai.assert.deepEqual(ball.position, expected);
+      });
+
+      it("should be able to move towards bottom-left", () => {
+        const velocity = { left: 5, top: 5 };
+        const ballPosition = { left: 50, top: 50 };
+        const ball = new Ball(radius, ballPosition, velocity);
+        ball.setVelocity(-(ball.velocity.left), ball.velocity.top );
+        ball.move();
+
+        const expected = { left: 45, top: 55 };
+        chai.assert.deepEqual(ball.position, expected);
+      });
+
+      it("should be able to move towards top-right", () => {
+        const velocity = { left: 5, top: 5 };
+        const ballPosition = { left: 50, top: 50 };
+        const ball = new Ball(radius, ballPosition, velocity);
+        ball.setVelocity((ball.velocity.left), -(ball.velocity.top) );
+        ball.move();
+
+        const expected = { left: 55, top: 45 };
+        chai.assert.deepEqual(ball.position, expected);
+      });
+
+    });
+
   });
 
-  describe("moveLeft", () => {
-    it("should decrease ball.left by 10", () => {
-      const ball = new Ball(radius, top, left);
-      ball.moveLeft();
-      chai.assert.equal(ball.left, 0);
-    });
-  });
-
-  describe("moveRight", () => {
-    it("should increase ball.left by 10", () => {
-      const ball = new Ball(radius, top, left);
-      ball.moveRight();
-      chai.assert.equal(ball.left, 20);
-    });
-  });
 
 });

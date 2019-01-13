@@ -24,8 +24,8 @@ const createBallDiv = function () {
 
 const drawBall = function (ball) {
   const ballDiv = document.getElementById(BALL_1);
-  ballDiv.style.top = applyPixel(ball.top);
-  ballDiv.style.left = applyPixel(ball.left);
+  ballDiv.style.top = applyPixel(ball.position.top);
+  ballDiv.style.left = applyPixel(ball.position.left);
   ballDiv.style.height = applyPixel(ball.radius*2);
   ballDiv.style.width = applyPixel(ball.radius*2);
 };

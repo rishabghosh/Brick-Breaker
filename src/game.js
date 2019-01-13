@@ -16,28 +16,19 @@ class Paddle {
 }
 
 class Ball {
-  constructor(radius, top, left) {
+  constructor(radius, ballPosition, velocity) {
     this.radius = radius;
-    this.top = top;
-    this.left = left;
+    this.position = ballPosition;
+    this.velocity = velocity;
+  }
+  move() {
+    this.position.left += this.velocity.left;
+    this.position.top += this.velocity.top;
   }
 
-  moveTop() {
-    this.top -= 10;
-  }
-
-  moveBottom() {
-    this.top += 10;
-  }
-
-  moveLeft() {
-    this.left -= 10;
-  }
-    
-  moveRight() {
-    this.left += 10;
-
-  }
-
+  setVelocity(left, top) {
+    this.velocity.left = left;
+    this.velocity.top = top;
+  } 
 }
 
