@@ -6,8 +6,8 @@ const movePaddle = function (paddle) {
   drawPaddle(paddle);
 };
 
-const moveBall = function (ball) {
-  ball.setVelocity(5, 5);
+const moveBall = function (ball, game) {
+  game.detectCollision();
   ball.move();
   drawBall(ball);
 };
@@ -26,16 +26,17 @@ const initialize = function () {
   playground.appendChild(paddleDiv);
   playground.appendChild(ballDiv);
 
-  const ballPosition = { left: 0, top: 0 };
+  const ballPosition = { left: 200, top: 300 };
   const velocity = { left: 5, top: 5 };
   const paddle = new Paddle(height, width, bottom, left);
   const ball = new Ball(radius, ballPosition, velocity);
+  const game = new Game(paddle, ball);
   drawPaddle(paddle);
   drawBall(ball);
 
   playground.focus(); //events focuses on playground
   playground.onkeydown = movePaddle.bind(null, paddle);
-  setInterval(() => moveBall(ball), 50);
+  setInterval(() => moveBall(ball, game), 50);
 };
 
 window.onload = initialize;

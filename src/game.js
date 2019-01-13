@@ -1,12 +1,12 @@
 class Paddle {
-  constructor(height, width, bottom, left){
+  constructor(height, width, bottom, left) {
     this.height = height;
     this.width = width;
     this.bottom = bottom;
     this.left = left;
   }
 
-  moveLeft(){
+  moveLeft() {
     this.left -= 10;
   }
 
@@ -29,6 +29,40 @@ class Ball {
   setVelocity(left, top) {
     this.velocity.left = left;
     this.velocity.top = top;
-  } 
+  }
 }
 
+const isColliedWithSideWalls = function(ball){
+  const diameterOfBall = ball.radius * 2;
+  return ball.position.left <= (0 + diameterOfBall) || 
+  ball.position.left >= (960 - diameterOfBall);
+};
+
+const isColliedWithTopWall = function(ball){
+  const diameterOfBall = ball.radius * 2;
+  return ball.position.top <= (0 + diameterOfBall) ||
+  ball.position.top >= (600 - diameterOfBall);
+};
+
+class Game {
+  constructor(paddle, ball) {
+    this.paddle = paddle;
+    this.ball = ball;
+  }
+
+  detectCollision() {
+    const velocityOfLeft = this.ball.velocity.left;
+    const velocityOfTop = this.ball.velocity.top;
+    const diameterOfBall = this.ball.radius * 2;
+
+    if (isColliedWithTopWall(this.ball)) {
+      this.ball.setVelocity(velocityOfLeft, -velocityOfTop);
+      return;
+    }
+
+    if (isColliedWithSideWalls(this.ball)){
+      this.ball.setVelocity(-velocityOfLeft, velocityOfTop);
+    }
+  }
+
+}
