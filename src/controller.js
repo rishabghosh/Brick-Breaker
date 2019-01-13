@@ -7,12 +7,11 @@ const movePaddle = function (paddle) {
 };
 
 const moveBall = function (ball, game) {
-  let gameStatus = true; //true is running, false is gameover
-  game.detectCollision(gameStatus);
+  game.detectCollision();
   ball.move();
   drawBall(ball);
 };
-
+let a;
 const initialize = function () {
   const height = 20;
   const width = 100;
@@ -36,9 +35,11 @@ const initialize = function () {
   drawBall(ball);
 
   playground.focus(); //events focuses on playground
-  playground.onkeydown = movePaddle.bind(null, paddle);
-  setInterval(() => moveBall(ball, game), 20);
+  a = setInterval(function () {
+    playground.onkeydown = movePaddle.bind(null, paddle);
+    moveBall(ball, game);
+  }, 20);
 };
 
-const startGame = ()=> window.onload = initialize;
+const startGame = () => window.onload = initialize;
 startGame();
