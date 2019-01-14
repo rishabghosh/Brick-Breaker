@@ -5,20 +5,21 @@ describe("class Paddle", () => {
   const width = 100;
   const bottom = 5;
   const left = 430;
+  const speed = 20;
 
   describe("moveRight", () => {
     it("should increase paddle.left by 10", () => {
-      const paddle = new Paddle(height, width, bottom, left);
+      const paddle = new Paddle(height, width, bottom, left, speed);
       paddle.moveRight();
-      chai.assert.equal(paddle.left, 440);
+      chai.assert.equal(paddle.left, 450);
     });
   });
 
   describe("moveLeft", () => {
     it("should decrease paddle.left by 10", () => {
-      const paddle = new Paddle(height, width, bottom, left);
+      const paddle = new Paddle(height, width, bottom, left, speed);
       paddle.moveLeft();
-      chai.assert.equal(paddle.left, 420);
+      chai.assert.equal(paddle.left, 410);
     });
   });
 

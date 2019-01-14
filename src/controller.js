@@ -18,6 +18,7 @@ const initialize = function () {
   const bottom = 5;
   const left = 430;
   const radius = 10;
+  const paddleSpeed = 20;
 
 
   const playground = document.getElementById(PLAYGROUND);
@@ -28,7 +29,7 @@ const initialize = function () {
 
   const ballPosition = { left: 200, top: 300 };
   const velocity = { left: 5, top: 5 };
-  const paddle = new Paddle(height, width, bottom, left);
+  const paddle = new Paddle(height, width, bottom, left, paddleSpeed);
   const ball = new Ball(radius, ballPosition, velocity);
   const game = new Game(paddle, ball);
   drawPaddle(paddle);
